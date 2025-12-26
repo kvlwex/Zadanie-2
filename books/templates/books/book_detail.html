@@ -1,0 +1,14 @@
+<h1>{{ object.title }}</h1>
+<p>Автор: {{ object.author }}</p>
+<p>ISBN: {{ object.isbn }}</p>
+<p>Год: {{ object.publication_year }}</p>
+<p>Жанры: {{ object.genres }}</p>
+<p>Соавторы: {{ object.co_authors }}</p>
+<p>Описание: {{ object.summary }}</p>
+
+<a href="{% url 'book_update' object.pk %}">Редактировать</a>
+<form method="post" action="{% url 'book_delete' object.pk %}">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+</form>
+<a href="{% url 'book_list' %}">Назад к списку</a>
